@@ -1,0 +1,46 @@
+﻿@model List<OrdenesDeCompra.Models.OrdenDeCompra>
+
+@{
+    ViewData["Title"] = "Ordenes";
+}
+
+<h2>Ordenes</h2>
+<a class="btn btn-primary" href="@Url.Action("Crear")">Crear Orden</a>
+
+<table id="ordenesTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Número de Orden</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">Proveedor</th>
+            <th class="text-center">Monto Total</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orden in Model)
+        {
+            <tr>
+                <td class="text-center">@orden.Id</td>
+                <td class="text-center">@orden.NumeroDeOrden</td>
+                <td class="text-center">@orden.Fecha.ToShortDateString()</td>
+                <td class="text-center">@orden.Proveedor</td>
+                <td class="text-center">@orden.MontoTotal.ToString("C")</td>
+                <td class="text-center">
+                    <a class="btn btn-warning" href="@Url.Action("Editar", new { id = orden.Id })">Editar</a>
+                    <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = orden.Id })">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ordenesTable').DataTable();
+        });
+    </script>
+}

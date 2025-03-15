@@ -1,0 +1,28 @@
+﻿@model OrdenesDeCompra.Models.OrdenDeCompra
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+
+<h2>Crear Orden de Compra</h2>
+
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label>Número de Orden</label>
+        <input type="text" class="form-control" asp-for="NumeroDeOrden" required />
+    </div>
+    <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" class="form-control" asp-for="Fecha" required />
+    </div>
+    <div class="form-group">
+        <label>Proveedor</label>
+        <input type="text" class="form-control" asp-for="Proveedor" required />
+    </div>
+    <div class="form-group">
+        <label>Monto Total</label>
+        <input type="number" class="form-control" asp-for="MontoTotal" step="0.01" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
