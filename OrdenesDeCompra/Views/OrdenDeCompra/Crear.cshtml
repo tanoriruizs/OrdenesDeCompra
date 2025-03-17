@@ -4,10 +4,9 @@
     ViewData["Title"] = "Crear";
 }
 
-
 <h2>Crear Orden</h2>
 
-<form asp-action="Crear" method="post">
+<form asp-action="Crear" method="post" id="createForm">
     <div class="form-group">
         <label>Número de Orden<span style="color: red;">*</span></label>
         <input type="text" class="form-control" asp-for="NumeroDeOrden" />
@@ -32,7 +31,9 @@
         <span class="text-danger" asp-validation-for="MontoTotal"></span>
     </div>
     <br />
-
     <button type="submit" class="btn btn-success"> <i class="bi bi-floppy-fill"></i> Guardar</button>
 </form>
 
+@section Scripts {
+    <script src="~/js/Crear.js"></script>
+}
