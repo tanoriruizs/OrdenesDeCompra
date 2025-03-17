@@ -5,31 +5,33 @@
 }
 
 
-<h2>Editar Orden de Compra</h2>
+<h2>Editar Orden | @Model.NumeroDeOrden </h2>
 
-<form asp-action="Editar" method="post">
-    <input type="hidden" asp-for="Id" />
-
+<form asp-action="Crear" method="post">
     <div class="form-group">
-        <label>Número de Orden</label>
-        <input type="text" class="form-control" asp-for="NumeroDeOrden" required />
+        <label>Número de Orden<span style="color: red;">*</span></label>
+        <input type="text" class="form-control" asp-for="NumeroDeOrden" />
+        <span class="text-danger" asp-validation-for="NumeroDeOrden"></span>
     </div>
 
     <div class="form-group">
-        <label>Fecha</label>
-        <input type="date" class="form-control" asp-for="Fecha" required />
+        <label>Fecha<span style="color: red;">*</span></label>
+        <input type="date" class="form-control" asp-for="Fecha" />
+        <span class="text-danger" asp-validation-for="Fecha"></span>
     </div>
 
     <div class="form-group">
-        <label>Proveedor</label>
-        <input type="text" class="form-control" asp-for="Proveedor" required />
+        <label>Proveedor<span style="color: red;">*</span></label>
+        <input type="text" class="form-control" asp-for="Proveedor" />
+        <span class="text-danger" asp-validation-for="Proveedor"></span>
     </div>
 
     <div class="form-group">
-        <label>Monto Total</label>
-        <input type="number" class="form-control" asp-for="MontoTotal" step="0.01" required />
+        <label>Monto Total<span style="color: red;">*</span></label>
+        <input type="number" class="form-control" asp-for="MontoTotal" step="0.01" />
+        <span class="text-danger" asp-validation-for="MontoTotal"></span>
     </div>
-
-    <button type="submit" class="btn btn-success">Guardar Cambios</button>
-    <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+    <br />
+    <button type="submit" class="btn btn-success"> <i class="bi bi-floppy-fill"></i> Guardar</button>
 </form>
+

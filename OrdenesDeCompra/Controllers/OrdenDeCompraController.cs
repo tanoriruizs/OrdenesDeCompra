@@ -65,10 +65,16 @@ namespace OrdenesDeCompra.Controllers
         [HttpPost]
         public IActionResult Crear(OrdenDeCompra orden)
         {
+            if (!ModelState.IsValid) 
+            {
+                return View(orden); 
+            }
+
             var ordenes = ObtenerOrdenes();
             orden.Id = ordenes.Any() ? ordenes.Max(o => o.Id) + 1 : 1;
             ordenes.Add(orden);
             GuardarOrdenes(ordenes);
+
             return RedirectToAction("Index");
         }
 
@@ -81,6 +87,11 @@ namespace OrdenesDeCompra.Controllers
         [HttpPost]
         public IActionResult Editar(OrdenDeCompra orden)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(orden); 
+            }
+
             var ordenes = ObtenerOrdenes();
             var index = ordenes.FindIndex(o => o.Id == orden.Id);
             if (index != -1)
